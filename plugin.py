@@ -3,7 +3,7 @@
 # Author: Nonolk, 2019-2020
 # FirstFree function courtesy of @moroen https://github.com/moroen/IKEA-Tradfri-plugin
 """
-<plugin key="tahomaIO" name="Tahoma or conexoon IO blind plugin" author="nonolk" version="1.0.5" externallink="https://github.com/nonolk/domoticz_tahoma_blind">
+<plugin key="somIO" name="AC Tahoma or conexoon IO plugin" author="nonolk" version="1.0.5" externallink="https://github.com/nonolk/domoticz_tahoma_blind">
     <description>Tahoma/Conexoon plugin for IO blinds, this plugin require internet connexion.<br/>Please provide your email and password used to connect Tahoma/Conexoon</description>
     <params>
         <param field="Username" label="Username" width="200px" required="true" default=""/>
