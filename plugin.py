@@ -19,8 +19,12 @@
 """
 
 import Domoticz
+import urllib
 import urllib.parse
 import json
+import time
+import base64
+import itertools
 
 class BasePlugin:
     enabled = False
@@ -43,7 +47,7 @@ class BasePlugin:
         return
 
     def onStart(self):
-        Domoticz.Status("Starting Tahoma blind plugin")
+        Domoticz.Log("Starting Tahoma blind plugin")
         if Parameters["Mode6"] == "Debug":
            Domoticz.Debugging(1)
         self.httpConn = Domoticz.Connection(Name="Secure Connection", Transport="TCP/IP", Protocol="HTTPS", Address=self.srvaddr, Port="443")
