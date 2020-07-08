@@ -86,7 +86,7 @@ class BasePlugin:
 
         if (Status == 200 and not self.logged_in):
           self.logged_in = True
-          Domoticz.Status("Tahoma auth succeed")
+          Domoticz.Log("Tahoma auth succeed")
           tmp = Data["Headers"]
           self.cookie = tmp["Set-Cookie"]
 
@@ -139,7 +139,7 @@ class BasePlugin:
           if (len(Devices) == 0 and self.startup):
             count = 1
             for device in self.filtered_devices:
-               Domoticz.Status("Creating device: "+device["label"])
+               Domoticz.Log("Creating device: "+device["label"])
                swtype = None
                
                if (device["deviceURL"].startswith("io://")):
@@ -152,7 +152,7 @@ class BasePlugin:
                if not (count in Devices):
                    Domoticz.Error("Device creation not allowed, please allow device creation")
                else:
-                   Domoticz.Status("Device created: "+device["label"])
+                   Domoticz.Log("Device created: "+device["label"])
                    count += 1
 
           if ((len(Devices) < len(self.filtered_devices)) and len(Devices) != 0 and self.startup):
@@ -169,7 +169,7 @@ class BasePlugin:
                  idx = firstFree()
                  swtype = None
                  
-                 Domoticz.Status("Must create device: "+device["label"])
+                 Domoticz.Log("Must create device: "+device["label"])
                  
                  if (device["deviceURL"].startswith("io://")):
                     swtype = 16
@@ -181,7 +181,7 @@ class BasePlugin:
                  if not (idx in Devices):
                      Domoticz.Error("Device creation not allowed, please allow device creation")
                  else:
-                     Domoticz.Status("New device created: "+device["label"])
+                     Domoticz.Log("New device created: "+device["label"])
                else:
                   found = False
 
@@ -275,7 +275,7 @@ class BasePlugin:
 
         elif (self.heartbeat and (self.con_delay < self.wait_delay) and (not self.logged_in)):
           self.con_delay +=1
-          Domoticz.Status("Too much connections waiting before authenticating again")
+          Domoticz.Log("Too much connections waiting before authenticating again")
 
         elif (self.heartbeat and (self.con_delay == self.wait_delay) and (not self.logged_in)):
           if (not self.httpConn.Connected()):
